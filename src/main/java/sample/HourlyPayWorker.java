@@ -1,13 +1,22 @@
-public class HourlyPayWorker extends BaseWorker{
+package sample;
 
-    private final int hourlyPay;
+public class HourlyPayWorker extends BaseWorker implements Comparable<BaseWorker>{
+
+    private final double salary;
+
     public HourlyPayWorker(String name, int hourlyPay) {
         super(name);
-        this.hourlyPay = hourlyPay;
+        this.salary = 20.8 * 8 * hourlyPay;
+
     }
 
     @Override
-    void setSalary() {
-        this.salary = 20.8 * 8 * hourlyPay;
+    public double getSalary() {
+        return  salary;
+    }
+
+    @Override
+    public int compareTo(BaseWorker o) {
+        return Double.compare(this.getSalary(), o.getSalary());
     }
 }
